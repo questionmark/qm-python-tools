@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block title %}External Delivery App Home Page{% endblock %}
+
+{% block content %}
+<h2>Printing &amp; Scanning: Printing Bubble Sheets</h2>
+
+<p>Step 3: Select a Snapshot</p>
+
+<form method="POST" action="pasprint4">
+<input type="hidden" name="gid" value="{{gid}}" />
+<input type="hidden" name="aid" value="{{aid}}" />
+<table>
+    <tr><th>Select</th><th>ID</th><th>Name</th><th>Language</th></tr>
+{% for s in snapshots %}
+    <tr>
+        <td><input type="radio" name="sid" value="{{ s.ID.value }}" />
+        <td>{{ s.ID.value }}</td>
+        <td>{{ s.Name.value }}</td>
+        <td>{{ s.Language.value }}</td>
+    </tr>    
+{% endfor %}                    
+</table>
+
+<p><input type="submit"/>
+</form>
+ 
+{% endblock %}

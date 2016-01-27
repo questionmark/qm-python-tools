@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block title %}Launching Questionmark Secure...{% endblock %}
+
+{% block content %}
+<h1>Launching Questionmark Secure...</h1>
+
+<p>With a bit of luck, Questionmark Secure is launching right now!</p>
+
+<p>If it doesn't you can trying clicking
+<a href={{ link_attr|safe }}>here</a>.  You might need to download the
+latest version for your platform.</p>
+
+<script>
+window.onload = function(){
+    // window.location.assign({{ link_attr|safe}})
+    window.open({{ link_attr|safe}})
+}
+</script>
+{% endblock %}
+

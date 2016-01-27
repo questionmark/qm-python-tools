@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block title %}External Delivery App Home Page{% endblock %}
+
+{% block content %}
+<h2>Printing &amp; Scanning: Manage Uploas</h2>
+
+<p>Print Batch: {{ b.Name.value }}
+<br />
+Batch ID: {{ b.ID.value }}<br />
+Created: <span class="datetime">{{  b.CreatedDateTime_int }}</span></p>
+
+<dl>
+<dt>Participant</dt>
+<dd>ID: {{ p.ID.value }}<br />
+Name: {{ p.Name.value }}
+</dd>
+
+<dt>Assessment:</dt>
+<dd>{{ a.Name.value }}<br/>
+Snapshot: {{ s.Name.value }}<br />
+Language: {{ s.Language.value }}<br />
+<a href="snapview?sid={{ s.ID.value|safe }}" target="_blank">View
+    HTML</a><br />
+<a href="snapviewxml?sid={{ s.ID.value|safe }}" target="_blank">View
+    XML</a></dd>
+</dl>
+
+<p>Answer Upload:</p>
+
+<pre>{{ answers }}</pre>
+
+{% endblock %}

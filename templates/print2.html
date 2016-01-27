@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block title %}External Delivery App Home Page{% endblock %}
+
+{% block content %}
+<h2>Printing &amp; Scanning: Printing Bubble Sheets</h2>
+
+<p>Step 2: Select an Assessment</p>
+
+<form method="POST" action="pasprint3">
+<input type="hidden" name="gid" value="{{gid}}" />
+<table>
+    <tr><th>Select</th><th>ID</th><th>Name</th></tr>
+{% for a in assessments %}
+    <tr>
+        <td><input type="radio" name="aid" value="{{ a.ID.value }}" />
+        <td>{{ a.ID.value }}</td>
+        <td>{{ a.Name.value }}</td>
+    </tr>    
+{% endfor %}                    
+</table>
+
+<p><input type="submit"/>
+</form>
+ 
+{% endblock %}

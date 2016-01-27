@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+
+{% block title %}External Delivery App Home Page{% endblock %}
+
+{% block content %}
+<h2>Printing &amp; Scanning: Preparing Quizzes, Tests and Exams</h2>
+
+<h2>Snapshots</h2>
+
+<script>
+function doPrint(snapshot) {
+    w = window.open(snapshot, '_blank');
+    w.print()
+}
+</script>
+
+<table>
+    <tr><th>ID</th><th>AssessmentID</th><th>Language</th><th>Name</th>
+    <th>Print</th><th>HTML</th><th>XML</th></tr>
+{% for s in snapshots %}
+    <tr>
+        <td>{{ s.ID.value }}</td>
+        <td>{{ s.AssessmentID.value }}</td>
+        <td>{{ s.Language.value }}</td>
+        <td>{{ s.Name.value }}</td>
+        <td><a href="javascript:doPrint('snapview?sid={{ s.ID.value|safe }}')">Print</a></td>
+        <td><a href="snapview?sid={{ s.ID.value|safe }}">View HTML</a></td>
+        <td><a href="snapviewxml?sid={{ s.ID.value|safe }}">View XML</a></td>
+    </tr>    
+{% endfor %}                    
+</table>
+
+<h2>Assessments</h2>
+
+<table>
+    <tr><th>ID</th><th>Assessment Name</th><th>Language</th><th>Snapshot</th></tr>
+{% for a in alist %}
+    <tr>
+        <td>{{ a.ID.value }}</td>
+        <td>{{ a.Name.value }}</td>
+        <td>{{ a.Language.value }}</td>
+        <td><a href="snapshot?aid={{ a.ID.value|safe }}">Create Snapshot</a></td>
+    </tr>    
+{% endfor %}                    
+</table>
+
+<h2>Participants</h2>
+
+<table>
+    <tr><th>ID</th><th>Participant Name</th></tr>
+{% for p in participants %}
+    <tr>
+        <td>{{ p.ID.value }}</td>
+        <td>{{ p.Name.value }}</td>
+    </tr>    
+{% endfor %}                    
+</table>
+
+<hr />
+
+<form method="POST" action="new_attempt">
+<dl>
+<dt>Participant ID</dt>
+<dd><input type="text" name="pid"/></dd>
+<dt>Assessment ID</dt>
+<dd><input type="text" name="aid"/></dd>
+</dl>
+<p><input type="submit"/>
+</form>
+ 
+{% endblock %}

@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block title %}Cookie Warning{% endblock %}
+
+{% block content %}
+<h1>LTI-Noticeboard (for Python)</h1>
+
+<div id="framed">
+    <form id="wlaunch" action={{ ctest_attr|safe }} method="GET"
+            target="_blank" name="autosubmit">
+        <p>Your browser may be configured to block certain 'third party'
+        cookies.  You may still be able to use this tool in its own
+        window or tab.  If you don't see a pop-up window open
+        automatically it may also be blocked, in which case you can try
+        to open it manually with the button below.</p>
+        <input type="hidden" name="return" value={{ return_attr|safe }} />
+        <input type="hidden" name="sid" value={{ sid_attr|safe }} />
+        <p><button type="submit" name="continue" value="continue">Open in
+        New Window</button></p>
+    </form>
+</div>
+<hr/ >
+<div id="info">
+    {% include "djangoapp/cinfo.html" %}
+</div>
+<script>
+window.onload = function(){
+    if (window.top != window.self) {
+        // we're framed
+        document.getElementById('info').style.display = 'none';
+        document.forms[0].submit();
+    } else {
+        document.getElementById('framed').style.display = 'none';
+    };
+}
+</script>
+{% endblock %}
+

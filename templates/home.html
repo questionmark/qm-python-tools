@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block title %}Heathrow App Home Page{% endblock %}
+
+{% block content %}
+<h2>Home</h2>
+<p><i>Connected to:</i> {{ url }}<br />
+<i>as user: {{ url_user }}</i></p>
+
+<p>Documentation</p>
+<ul>
+<li><a href="http://developer.questionmark.com"
+    target="_blank">developer.questionmark.com</a></li>
+<li><a href="https://www.questionmark.com/content/delivery-odata-api-guide"
+    target="_blank">Delivery OData API Guide</a></li>
+</ul>
+
+{% endblock %}

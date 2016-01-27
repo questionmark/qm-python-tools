@@ -1,0 +1,71 @@
+html {
+    font-family: sans-serif;
+    font-size: 10px;
+}
+
+
+body {
+    font-family: "Droid Sans",Helvetica,Arial,sans-serif;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #333333;
+    background-color: #ffffff;
+}
+
+
+p {
+    margin: 0 0 10px;
+}
+
+
+.navcontainer {
+    display: block;
+    border: none;
+    background-color: #d8d8d8;    
+    position: relative;
+    min-height: 50px;
+    border-radius: 0;
+    margin-bottom: 0;
+    z-index: 1;
+}
+
+.navbar {
+    display: block;
+    font-size: 1.1em;
+    float: left;
+    margin: 0;
+    padding-left: 0;
+    list-style: none;    
+}
+    
+.navitem {
+    position: relative;
+    display: block;
+    float: left;
+    list-style: none;
+    list-style-image: none;
+    font-size: 1.1em;
+}
+
+.navitem > a:focus {
+    background-color: #3e6aae;
+    color: #ffffff;
+}
+
+.navitem > a {
+    display: block;
+    position: relative;
+    color: #333333;
+    padding-right: 15px;
+    padding-left: 15px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    line-height: 20px;
+    background-color: transparent;
+    text-decoration: none;
+}
+
+
+.datetime {
+    display: none;
+}

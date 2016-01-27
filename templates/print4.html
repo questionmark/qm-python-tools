@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% block title %}External Delivery App Home Page{% endblock %}
+
+{% block content %}
+<h2>Printing &amp; Scanning: Printing Bubble Sheets</h2>
+
+<script>
+function doPrint(snapshot) {
+    w = window.open(snapshot, '_blank');
+    w.print()
+}
+</script>
+
+<p>Step 4: Confirm Details and Create Print Batch</p>
+
+<form method="POST" action="pasprint5">
+<input type="hidden" name="gid" value="{{gid}}" />
+<input type="hidden" name="aid" value="{{aid}}" />
+<input type="hidden" name="sid" value="{{sid}}" />
+
+<dl>
+<dt>Group:</dt>
+<dd>{{ g.Name.value }}<br />
+{{ gcount }} participants.</dd>
+
+<dt>Assessment:</dt>
+<dd>{{ a.Name.value }}<br/>
+Snapshot: {{ s.Name.value }}; Language: {{ s.Language.value }}<br />
+<a href="snapview?sid={{ s.ID.value|safe }}" target="_blank">View
+    HTML</a><br />
+<a href="snapviewxml?sid={{ s.ID.value|safe }}" target="_blank">View
+    XML</a></dd>
+</dl>
+
+<p>Batch Name: <input type="text" name="bname" /> <input type="submit"
+value="Create"/></p>
+
+</form>
+
+{% endblock %}

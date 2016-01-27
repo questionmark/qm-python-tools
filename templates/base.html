@@ -1,0 +1,42 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+ "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+  <head>
+   <title>{% block title %}Heathrow App{% endblock %}</title>
+   {% block head %}{% endblock %}
+   <link href={{ css_attr|safe }} rel="stylesheet" type="text/css" />
+   <link href={{ favicon_attr|safe }} rel="icon"
+       type="image/vnd.microsoft.icon" />
+  </head>
+<body>
+
+<h1>Delivery OData Demo App</h1>
+<div class="navcontainer">
+<ul class="navbar">
+<li class="navitem"><a href={{ home_attr|safe }}>Home</a></li>
+<li class="navitem"><a href={{ ops_attr|safe }}>OPS</a></li>
+<li class="navitem"><a href={{ pas_attr|safe }}>P&amp;S</a></li>
+</ul>
+</div>
+<div class="page">
+
+{% block content %}
+{% endblock %}
+
+<script>
+var elist = document.getElementsByClassName("datetime");
+for (var i = 0; i < elist.length; i++) {
+    e = elist[i]
+    d = new Date(Number(e.innerHTML))
+    e.innerHTML = d
+    e.style.display = "inline"
+}
+</script>
+</div>
+
+<hr />
+<div class="footer">
+<p>Delivery OData Demo application: {{ url }}</p>
+</div>
+</body>
+</html>

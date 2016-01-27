@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+
+{% block title %}Online Proctoring App Home Page{% endblock %}
+
+{% block content %}
+<h1>Online Proctoring Test App</h1>
+
+<p>This is a simple test application for the Online Proctoring project.</p>
+
+<h2>Attempts</h2>
+
+<table>
+    <tr><th>ID</th><th>Participant ID</th><th>Assessment
+    ID</th><th>External ID</th><th colspan="2">Launch</th></tr>
+{% for a in attempts %}
+    <tr>
+        <td>{{ a.ID.value }}</td>
+        <td>{{ a.ParticipantID.value }}</td>
+        <td>{{ a.AssessmentID.value }}</td>
+        <td>{{ a.ExternalAttemptID.value }}</td>
+        <td><a href="launch?aid={{ a.ID.value|safe }}">Go Candidate</a></td>
+        <td><a href="plaunch?aid={{ a.ID.value|safe }}">Go Proctor</a></td>
+    </tr>    
+{% endfor %}                    
+</table>
+
+<h2>Assessments</h2>
+
+<table>
+    <tr><th>ID</th><th>Assessment Name</th><th>Language</th></tr>
+{% for a in alist %}
+    <tr>
+        <td>{{ a.ID.value }}</td>
+        <td>{{ a.Name.value }}</td>
+        <td>{{ a.Language.value }}</td>
+    </tr>    
+{% endfor %}                    
+</table>
+
+<h2>Participants</h2>
+
+<table>
+    <tr><th>ID</th><th>Participant Name</th></tr>
+{% for p in participants %}
+    <tr>
+        <td>{{ p.ID.value }}</td>
+        <td>{{ p.Name.value }}</td>
+    </tr>    
+{% endfor %}                    
+</table>
+
+<hr />
+
+<form method="POST" action="new_attempt">
+<dl>
+<dt>Participant ID</dt>
+<dd><input type="text" name="pid"/></dd>
+<dt>Assessment ID</dt>
+<dd><input type="text" name="aid"/></dd>
+</dl>
+<p><input type="submit"/>
+</form>
+ 
+{% endblock %}

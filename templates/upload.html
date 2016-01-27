@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block title %}External Delivery App Home Page{% endblock %}
+
+{% block content %}
+<h2>Printing &amp; Scanning: Manage Uploads</h2>
+
+<p>Step 1: Select a Group of participants...</p>
+
+<form method="POST" action="pasupload2">
+<table>
+    <tr><th>Select</th><th>ID</th><th>Name</th></tr>
+{% for g in groups %}
+    <tr>
+        <td><input type="radio" name="gid" value="{{ g.ID.value }}" />
+        <td>{{ g.ID.value }}</td>
+        <td>{{ g.Name.value }}</td>
+    </tr>    
+{% endfor %}                    
+</table>
+
+<p><input type="submit"/>
+</form>
+
+{% endblock %}

@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block title %}External Delivery App Home Page{% endblock %}
+
+{% block content %}
+<h2>Printing &amp; Scanning: Sample Bubble Sheet</h2>
+
+{% for q in qlist %}
+<p>{{ q.aml_qnumber }}.
+    {% if q.type == "TF" or q.type == "MC" or q.type == "YN" or q.type == "LKS" %}
+        {% for c in q.aml_choices %}
+        {{ c }}. <input type="radio" name="q{{ q.aml_qnumber }}"
+            value="{{ c }}"/>
+        {% endfor %}
+    {% elif q.type == "ESSAY" %}
+        {% for c in q.aml_choices %}
+        {{ c }}. <input type="text" name="q{{ q.aml_qnumber }}" />
+        {% endfor %}
+    {% else %}
+        {{ c }}. Unscanned type {{ q.type }}
+    {% endif %}</p>
+{% endfor %}                    
+
+{% endblock %}

@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block title %}External Delivery App Home Page{% endblock %}
+
+{% block content %}
+<h2>Printing &amp; Scanning: Printing Bubble Sheets</h2>
+
+<p>Step 1: Select a Group of participants...</p>
+
+<form method="POST" action="pasprint2">
+<table>
+    <tr><th>Select</th><th>ID</th><th>Name</th></tr>
+{% for g in groups %}
+    <tr>
+        <td><input type="radio" name="gid" value="{{ g.ID.value }}" />
+        <td>{{ g.ID.value }}</td>
+        <td>{{ g.Name.value }}</td>
+    </tr>    
+{% endfor %}                    
+</table>
+
+<p><input type="submit"/>
+</form>
+
+<p>...or an existing Print Batch:</p>
+
+<table>
+    <tr><th>ID</th><th>Name</th><th>Created</th><th>Action</th></tr>
+{% for b in batches %}
+    <tr>
+        <td>{{ b.ID.value }}</td>
+        <td>{{ b.Name.value }}</td>
+        <td><span class="datetime">{{ b.CreatedDateTime_int }}</span></td>
+        <td><a href="pasprint6?bid={{ b.ID.value }}">More info...</a></td>
+    </tr>    
+{% endfor %}                    
+</table>
+
+{% endblock %}
